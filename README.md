@@ -7,8 +7,8 @@ and also has pages that give an analysis based on the data recieved from the
 Android app. 
 
 
-We used sklearn for Sentiment Analysis of the comments written by students
-as well as Bigram Collocation Finder using NLTK that would extract 
+We used sklearn for a Sentiment Analysis of the comments written by students,
+as well as a Bigram Collocation Finder using NLTK that would extract 
 meaningul highlights from comments recieved, along with averages, strengths
 and weaknesses of individual teachers.
 
