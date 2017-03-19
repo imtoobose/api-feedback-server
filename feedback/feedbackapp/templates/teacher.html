@@ -4,22 +4,115 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+		<style>
+			.placeholder{
+				background-image:
+				    url('{% static 'saumitra.jpeg' %}');
+				background-size: cover;
+				background-repeat:   no-repeat;
+				background-position: center center;
+			}
+
+			.mdl-card__title-text{
+				color: #FFF;
+				font-size: 18px;
+				background: rgba(0,0,0, 0.1);
+				padding-left: 15px;
+				padding-right: 15px;
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+
+			.mdl-card{
+				width: 300px;
+				height:300px;
+				margin: 15px;
+			}
+
+			.mdl-card__title{
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+
+			.profile-container{
+				background: #455A64;
+			}
+
+			.center-support{
+				text-align: center;
+				font-weight: 700;
+				font-size: 18px;
+			}
+
+			.mdl-tabs__panel ul{
+				list-style-type: none;
+			}
+		</style>
 	</head>
 	<body>
 		<input id="teacher-name" type="hidden" value="{{teacher}}">
 
+		<div class="profile-container">
 		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--3-col">
+			<div class="mdl-cell mdl-cell--4-col"></div>
+			<div class="mdl-cell mdl-cell--4-col">
 				<div class="teacher-card mdl-card mdl-shadow--2dp">
 					<div class="mdl-card__title mdl-card--expand placeholder">
-						<h3 class="mdl-card__title-text"> Saumitra Bose </h3>
+						<!-- <h3 class="mdl-card__title-text"> Saumitra Bose </h3> -->
 					</div>
-					<div class="mdl-card__actions mdl-card--border">
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/teacher/Saumitra Bose/"> View details </a>
-					</div>
+					<div class="center-support mdl-card__supporting-text">
+					    Saumitra Bose
+					  </div>
 				</div>
 			</div>
+			<div class="mdl-cell mdl-cell--4-col"></div>
 		</div>
+		</div>
+
+
+		<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+		  <div class="mdl-tabs__tab-bar">
+		      <a href="#overall-panel" class="mdl-tabs__tab is-active">Overall</a>
+		      <a href="#theory-panel" class="mdl-tabs__tab">Practicals</a>
+		      <a href="#practicals-panel" class="mdl-tabs__tab">Theory</a>
+		  </div>
+
+		  <div class="mdl-tabs__panel is-active" id="overall-panel">
+		    <ul>
+		      <li>Viserys</li>
+		      <li>Daenerys</li>
+		    </ul>
+		  </div>
+
+		  <div class="mdl-tabs__panel" id="theory-panel">
+		    <ul id="theory">
+
+		    </ul>
+		    <ul id="theory-neg">
+		    
+		    </ul>
+		  </div>
+
+		  <div class="mdl-tabs__panel" id="practicals-panel">
+		    <!-- <ul>
+		      <li>Eddard</li>
+		      <li>Catelyn</li>
+		      <li>Robb</li>
+		      <li>Sansa</li>
+		      <li>Brandon</li>
+		      <li>Arya</li>
+		      <li>Rickon</li>
+		    </ul> -->
+		    <ul id="prac">
+		    </ul>
+
+		    <ul id="prac-neg">
+		    </ul>
+		  </div>
+		  
+		</div>
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.4.5/qwest.min.js"></script>
 		<script src="{% static 'teacher.js' %}"></script>
 	</body>

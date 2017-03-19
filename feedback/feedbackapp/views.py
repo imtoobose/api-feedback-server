@@ -6,6 +6,10 @@ from django.http import HttpResponse, JsonResponse
 from .models import Teacher
 from sklearn.externals import joblib
 import os
+import unicodedata
+import nltk
+from nltk.collocations import *
+from nltk import word_tokenize
 
 # Create your views here.
 
@@ -13,11 +17,11 @@ COUNT_VECT = "{base_path}/sklearn-models/count_vect.pkl".format(
     base_path=os.path.abspath(os.path.dirname(__file__))
 )
 
-TF_TRANS = "{base_path}/sklearn-models/tf_transformer.plk".format(
+TF_TRANS = "{base_path}/sklearn-models/tf_transformer.pkl".format(
     base_path=os.path.abspath(os.path.dirname(__file__))
 )
 
-CLF = "{base_path}/sklearn-models/clf.plk".format(
+CLF = "{base_path}/sklearn-models/clf.pkl".format(
     base_path=os.path.abspath(os.path.dirname(__file__))
 )
 
@@ -142,11 +146,16 @@ def get_one_teacher(request, teacher_name):
 	countTh = 0
 	countPr = 0
 	for teach in teacher:
+		print teach.comments, type(teach.comments.decode('utf-8'))
+		strcomment = unicodedata.normalize('NFKD', teach.comments).encode('ascii','ignore')
+		strcomment = strcomment.replace("\\", "\\\\").encode('string-escape')
+		print type(strcomment), strcomment
+
 		context['comments'].append(
 			{
 				"division": teach.division,
 				"comment": teach.comments,
-				"commentSentiment": analysis_sentence(teach.comments),
+				# "commentSentiment": analysis_sentence(strcomment),
 				"subject": teach.subject,
 			})
 
@@ -162,19 +171,43 @@ def get_one_teacher(request, teacher_name):
 				context['averageTheory'][i] = (context['averageTheory'][i]*countTh + int(feedback[i])) / (countTh + 1)
 			countTh += 1
 
+	bestones = createInterestingBigrams(context['comments'])
+	print 'bestones', bestones
 	return JsonResponse(context)
+
+
+def createInterestingBigrams(comments):
+	print 'comments is', comments
+	bigram_measures = nltk.collocations.BigramAssocMeasures()
+	words = ' '.join([unicodedata.normalize('NFKD', c['comment']).encode('ascii', 'ignore').lower() for c in comments])
+	tokens = word_tokenize(words)
+	finder = BigramCollocationFinder.from_words(tokens)
+	finder.apply_freq_filter(2)
+	best = finder.nbest(bigram_measures.pmi, 4)
+
+	bestDict = {}
+
+	for b in best:
+		for comment in comments:
+			if b[0] in comment['comment'].lower() and b[1] in comment['comment'].lower():
+				key = b[0] + ' ' + b[1]
+				if key in bestDict:
+					bestDict[key].append(comment['comment'])
+				else:
+					bestDict[key] = [comment]
+	return bestDict
 
 
 """
 Pass single string or list of string to get single int or array of int as output.
 1 indicates Positive sentiment while 0 indicate negative sentiment
 """
-def analysis_sentence(sentence):
+def analysis_sentence(lines):
 	count_vect = joblib.load(COUNT_VECT) 
 	tf_transformer = joblib.load(TF_TRANS) 
 	clf = joblib.load(CLF)
 
-	x_test_counts = count_vect.transform(lines)
+	x_test_counts = count_vect.transform([lines])
 	x_test_tf = tf_transformer.transform(x_test_counts)
 
 	predicted = clf.predict(x_test_tf)
