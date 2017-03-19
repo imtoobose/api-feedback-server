@@ -56,23 +56,8 @@ def save_feedback(request):
 	return HttpResponse('success')
 
 
-def show_all_teachers(request, isPractical):
-	allTeachers = Teacher.objects.all()
-	context = {
-		'teachers': [],
-	}
-
-	for teach in allTeachers:
-		context['teachers'].append({
-			"name": teach.name,
-			"subject": teach.subject,
-			"comments": teach.comments,
-			"feedback": teach.feedback.split(','),
-			})
-
-	print context
-
-	return render(request, 'all-teachers.html', context)
+def show_all_teachers(request):
+	return render(request, 'all-teachers.html', {})
 
 
 def get_teachers(request, isPractical="False"):
@@ -123,6 +108,11 @@ def get_teachers(request, isPractical="False"):
 		# count+=1
 
 	return JsonResponse(context)
+
+
+def teacher(request, teacher_name):
+	print teacher_name
+	return render(request, 'teacher.html', {"teacher": teacher_name})
 
 
 def get_one_teacher(request, teacher_name):

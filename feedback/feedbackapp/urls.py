@@ -7,5 +7,6 @@ urlpatterns = [
 	url(r'get-teachers/(?P<isPractical>[\w-]+)/$', views.get_teachers, name='get-teachers'),
 	url(r'save-feedback/$', views.save_feedback, name='save-feedback'),
 	url(r'get-one-teacher/(?P<teacher_name>[\w ]+)/$', views.get_one_teacher, name='get-one-teacher'),
+	url(r'teacher/(?P<teacher_name>[\w ]+)/$', views.teacher, name='teacher'),
 	url(r'$', views.index, name='index'),
 ]

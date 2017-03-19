@@ -1,9 +1,9 @@
-{% load staticfiles %}
-<html>
-	<head>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<!-- saved from url=(0042)http://10.120.110.161:8000/show-teachers/# -->
+<html class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="./show-teachers_files/icon">
+		<link rel="stylesheet" href="./show-teachers_files/material.indigo-pink.min.css">
+		<script defer="" src="./show-teachers_files/material.min.js"></script>
 
 		<style>
 
@@ -15,16 +15,12 @@
 			.header h1{
 				margin: 0;
 				color: #FFF;
-				font-size: 38px;
-				padding: 0;
+				font-size: 32px;
 			}
 
 			.all-teachers{
 				background: #455A64;
-				padding-top: 35px;
-				padding-bottom: 35px;
 			}
-
 			.mdl-card{
 				width: 220px;
 				height:220px;
@@ -33,7 +29,7 @@
 
 			.placeholder{
 				background-image:
-				    url('{% static 'placeholder.png' %}');
+				    url('/static/placeholder.png');
 				background-size: cover;
 				background-repeat:   no-repeat;
 				background-position: center center;
@@ -53,9 +49,6 @@
 				position: relative;
 				margin: 0 auto;
 				max-width: 80%;
-				background: #FFF;
-				padding-left: 25px;
-				padding-right: 25px;
 			}
 
 			.list-button{
@@ -89,23 +82,12 @@
 				width: 100%;
 				background: #E91E63;
 			}
-
-			.center-head{
-				display: inline-block;
-				font-size: 24px;
-				font-weight: 900;
-			}
-
-			.head-contain{
-				text-align: center;
-			}
-
 		</style>
 	</head>
 	<body>
-		<div class="header-contain mdl-shadow--6dp">
+		<div class="header-contain">
 		<div class="header">
-			<h1> Feedback Overview </h1>
+		<h1> Feedback Overview </h1>
 		</div>
 		</div>
 
@@ -113,10 +95,9 @@
 
 		<div class="contain">
 		<div class="teachers">
-			<div class="head-contain">
-			<h3 class="center-head"> BEST PERFORMERS </h3>
+			<div class="mdl-grid">
+				<h3 class="mdl-cell mdl-cell--12-col"> Best Perfomers </h3>
 			</div>
-			
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--3-col">
 					<div class="teacher-card mdl-card mdl-shadow--2dp">
@@ -124,7 +105,7 @@
 							<h3 class="mdl-card__title-text"> Saumitra Bose </h3>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/teacher/Saumitra Bose/"> View details </a>
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/teacher/Saumitra%20Bose/" data-upgraded=",MaterialButton,MaterialRipple"> View details <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 						</div>
 					</div>
 				</div>
@@ -135,7 +116,7 @@
 							<h3 class="mdl-card__title-text"> Cyprien Dcunha </h3>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View details </a>
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple"> View details <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 						</div>
 					</div>
 				</div>
@@ -146,7 +127,7 @@
 							<h3 class="mdl-card__title-text"> Jitendra Kumhar </h3>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View details </a>
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple"> View details <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 						</div>
 					</div>
 				</div>
@@ -157,7 +138,7 @@
 							<h3 class="mdl-card__title-text"> Jitendra Kumhar </h3>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View details </a>
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple"> View details <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 						</div>
 					</div>
 				</div>
@@ -168,23 +149,22 @@
 		</div>
 
 		<div class="all-teachers">
-			<div class="head-contain">
-				<h3 class="center-head" style="color: #FFF"> ALL TEACHERS </h3>
-			</div>
-			<div class="demo-list-action mdl-list mdl-shadow--8dp">
+			<div class="demo-list-action mdl-list">
+				<h3> All teachers </h3>
+				<hr>
 			  <div class="mdl-list__item">
 			    <span class="mdl-list__item-primary-content">
 			      <i class="material-icons mdl-list__item-avatar">person</i>
 			      <span>Bryan Cranston</span>
 			    </span>
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </div>
 			  <div class="mdl-list__item">
 			    <span class="mdl-list__item-primary-content">
 			      <i class="material-icons mdl-list__item-avatar">person</i>
 			      <span>Aaron Paul</span>
 			    </span>
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </div>
 			  <div class="mdl-list__item">
 			    <span class="mdl-list__item-primary-content">
@@ -192,7 +172,7 @@
 			      <span>Bob Odenkirk</span>
 			    </span>
 			    <span class="mdl-list__item-secondary-content">
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </span>
 			  </div>
 			  <div class="mdl-list__item">
@@ -201,7 +181,7 @@
 			      <span>Bob Odenkirk</span>
 			    </span>
 			    <span class="mdl-list__item-secondary-content">
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </span>
 			  </div>
 			  <div class="mdl-list__item">
@@ -210,7 +190,7 @@
 			      <span>Bob Odenkirk</span>
 			    </span>
 			    <span class="mdl-list__item-secondary-content">
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </span>
 			  </div>
 			  <div class="mdl-list__item">
@@ -219,13 +199,13 @@
 			      <span>Bob Odenkirk</span>
 			    </span>
 			    <span class="mdl-list__item-secondary-content">
-			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">Details</a>
+			    <a class="list-button mdl-list__item-secondary-action mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://10.120.110.161:8000/show-teachers/#" data-upgraded=",MaterialButton,MaterialRipple">Details<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
 			  </span>
 			  </div>
 			</div>
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/qwest/4.4.5/qwest.min.js"></script>
-		<script src="{% static 'getteachers.js' %}"></script>
-	</body>
-</html>
+		<script src="./show-teachers_files/qwest.min.js"></script>
+		<script src="./show-teachers_files/getteachers.js"></script>
+	
+</body></html>
