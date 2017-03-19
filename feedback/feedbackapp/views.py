@@ -5,6 +5,8 @@ import json
 from django.http import HttpResponse, JsonResponse
 from .models import Teacher
 from sklearn.externals import joblib
+import os
+
 # Create your views here.
 
 COUNT_VECT = "{base_path}/sklearn-models/count_vect.pkl".format(
@@ -144,6 +146,7 @@ def get_one_teacher(request, teacher_name):
 			{
 				"division": teach.division,
 				"comment": teach.comments,
+				"commentSentiment": analysis_sentence(teach.comments),
 				"subject": teach.subject,
 			})
 
