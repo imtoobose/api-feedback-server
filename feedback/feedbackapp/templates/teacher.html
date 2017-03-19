@@ -6,9 +6,10 @@
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 		<style>
+
 			.placeholder{
 				background-image:
-				    url('{% static 'saumitra.jpeg' %}');
+				    url('{% static 'placeholder.png' %}');
 				background-size: cover;
 				background-repeat:   no-repeat;
 				background-position: center center;
@@ -48,6 +49,11 @@
 			.mdl-tabs__panel ul{
 				list-style-type: none;
 			}
+			.short{
+				position: relative;
+				margin: 0 auto;
+				width: 80%;
+			}
 		</style>
 	</head>
 	<body>
@@ -62,7 +68,7 @@
 						<!-- <h3 class="mdl-card__title-text"> Saumitra Bose </h3> -->
 					</div>
 					<div class="center-support mdl-card__supporting-text">
-					    Saumitra Bose
+					    {{teacher}}
 					  </div>
 				</div>
 			</div>
@@ -71,26 +77,69 @@
 		</div>
 
 
-		<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+		<div style="margin-bottom: 50px" class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 		  <div class="mdl-tabs__tab-bar">
 		      <a href="#overall-panel" class="mdl-tabs__tab is-active">Overall</a>
-		      <a href="#theory-panel" class="mdl-tabs__tab">Practicals</a>
-		      <a href="#practicals-panel" class="mdl-tabs__tab">Theory</a>
+		      <a href="#theory-panel" class="mdl-tabs__tab">Theory</a>
+		      <a href="#practicals-panel" class="mdl-tabs__tab">Practical</a>
 		  </div>
 
+		  <a href="/show-teachers/" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="margin-left: 40px; margin-top: 30px"> Go Back </a>
+
 		  <div class="mdl-tabs__panel is-active" id="overall-panel">
-		    <ul>
-		      <li>Viserys</li>
-		      <li>Daenerys</li>
+		  <div style="margin-left: 40px">
+		  <h5> Theory Reviews </h5>
+		  </div>
+
+		  <ul id="theory-overall">
+		  </ul>
+
+		  	<div style="margin-left: 40px">
+		  	<h5> Practicals Reviews </h5>
+		  	</div>
+
+		    <ul id="prac-overall">
 		    </ul>
+
+		    <div style="margin-left: 40px">
+		    	<h5> What Students are saying </h5>
+		    </div>
+
+		    <div style="margin-left: 40px;">
+		    <h5 style="font-size:16px"> Positive Comments </h5>
+		    </div>
+		    <ul id="pos-reviews">
+		    	
+		    </ul>
+
+
+		    <div style="margin-left: 40px">
+		    <h5 style="font-size:16px"> Negative Comments </h5>
+		    </div>
+		    <ul id="neg-reviews">
+		    
+		    </ul>
+
+		    <div style="margin-left: 40px">
+		    <h5 style="font-size:16px"> Common Sentiments </h5>
+		    </div>
+		    <div id="reviews">
+		    </div>
 		  </div>
 
 		  <div class="mdl-tabs__panel" id="theory-panel">
+		    <div style="margin-left: 40px">
+		    <h5 style="display: inline-block;"> Strengths </h5>
+		    </div>
 		    <ul id="theory">
 
 		    </ul>
+
+		    <div style="margin-left: 40px">
+		    	<h5> Weaknesses </h5>
+		    </div>
 		    <ul id="theory-neg">
-		    
+
 		    </ul>
 		  </div>
 
@@ -104,9 +153,15 @@
 		      <li>Arya</li>
 		      <li>Rickon</li>
 		    </ul> -->
+		    <div style="margin-left: 40px">
+		    <h5> Strengths </h5>
+		    </div>
 		    <ul id="prac">
 		    </ul>
 
+		    <div style="margin-left: 40px">
+		    <h5> Weaknesses </h5>
+		    </div>
 		    <ul id="prac-neg">
 		    </ul>
 		  </div>

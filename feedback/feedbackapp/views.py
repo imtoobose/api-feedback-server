@@ -10,6 +10,8 @@ import unicodedata
 import nltk
 from nltk.collocations import *
 from nltk import word_tokenize
+from nltk.corpus import stopwords
+
 
 # Create your views here.
 
@@ -155,7 +157,7 @@ def get_one_teacher(request, teacher_name):
 			{
 				"division": teach.division,
 				"comment": teach.comments,
-				# "commentSentiment": analysis_sentence(strcomment),
+				"commentSentiment": analysis_sentence(strcomment),
 				"subject": teach.subject,
 			})
 
@@ -172,15 +174,21 @@ def get_one_teacher(request, teacher_name):
 			countTh += 1
 
 	bestones = createInterestingBigrams(context['comments'])
-	print 'bestones', bestones
+	# print 'bestones', bestones
+
+	context['bestones'] = bestones
+
 	return JsonResponse(context)
 
 
 def createInterestingBigrams(comments):
 	print 'comments is', comments
+	s=set(stopwords.words('english'))
+
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	words = ' '.join([unicodedata.normalize('NFKD', c['comment']).encode('ascii', 'ignore').lower() for c in comments])
 	tokens = word_tokenize(words)
+	tokens = filter(lambda w: not w in s, tokens)
 	finder = BigramCollocationFinder.from_words(tokens)
 	finder.apply_freq_filter(2)
 	best = finder.nbest(bigram_measures.pmi, 4)
@@ -194,7 +202,7 @@ def createInterestingBigrams(comments):
 				if key in bestDict:
 					bestDict[key].append(comment['comment'])
 				else:
-					bestDict[key] = [comment]
+					bestDict[key] = [comment['comment']]
 	return bestDict
 
 
@@ -203,6 +211,7 @@ Pass single string or list of string to get single int or array of int as output
 1 indicates Positive sentiment while 0 indicate negative sentiment
 """
 def analysis_sentence(lines):
+	print lines
 	count_vect = joblib.load(COUNT_VECT) 
 	tf_transformer = joblib.load(TF_TRANS) 
 	clf = joblib.load(CLF)
@@ -211,5 +220,5 @@ def analysis_sentence(lines):
 	x_test_tf = tf_transformer.transform(x_test_counts)
 
 	predicted = clf.predict(x_test_tf)
-
-	return predicted
+	print 'predicted', predicted
+	return predicted[0]
