@@ -8,10 +8,20 @@ Android app.
 
 
 We used sklearn for Sentiment Analysis of the comments written by students
-as well as Bigram Collaction Finder using NLTK that would extract 
-meaningul highlights from comments recieved.
+as well as Bigram Collocation Finder using NLTK that would extract 
+meaningul highlights from comments recieved, along with averages, strengths
+and weaknesses of individual teachers.
 
 
 This was built in collaboration with [@CCD-1997](https://github.com/CCD-1997) and
-jitendra9873(https://github.com/jitendra9873). The android component of this
-application is [here.](https://github.com/jitendra9873/api-feedback-android)
+[@jitendra9873](https://github.com/jitendra9873). The android component of this
+application is [here.](https://github.com/jitendra9873/api-feedback-android). The
+code is incredibly messy, and not meant for production, but it works!
+
+
+### Installing and running the server:
+
+```
+pip install -r requirements.txt
+python manage.py runserver 0.0.0.0:8000
+```
