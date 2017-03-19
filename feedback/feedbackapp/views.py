@@ -4,7 +4,20 @@ from django.shortcuts import render
 import json
 from django.http import HttpResponse, JsonResponse
 from .models import Teacher
+from sklearn.externals import joblib
 # Create your views here.
+
+COUNT_VECT = "{base_path}/sklearn-models/count_vect.pkl".format(
+    base_path=os.path.abspath(os.path.dirname(__file__))
+)
+
+TF_TRANS = "{base_path}/sklearn-models/tf_transformer.plk".format(
+    base_path=os.path.abspath(os.path.dirname(__file__))
+)
+
+CLF = "{base_path}/sklearn-models/clf.plk".format(
+    base_path=os.path.abspath(os.path.dirname(__file__))
+)
 
 def index(request):
 	print 'HERE'
@@ -157,3 +170,20 @@ def get_one_teacher(request, teacher_name):
 			countTh += 1
 
 	return JsonResponse(context)
+
+
+"""
+Pass single string or list of string to get single int or array of int as output.
+1 indicates Positive sentiment while 0 indicate negative sentiment
+"""
+def analysis_sentence(sentence):
+	count_vect = joblib.load(COUNT_VECT) 
+	tf_transformer = joblib.load(TF_TRANS) 
+	clf = joblib.load(CLF)
+
+	x_test_counts = count_vect.transform(lines)
+	x_test_tf = tf_transformer.transform(x_test_counts)
+
+	predicted = clf.predict(x_test_tf)
+
+	return predicted
