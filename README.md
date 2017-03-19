@@ -15,7 +15,7 @@ and weaknesses of individual teachers.
 
 This was built in collaboration with [@CCD-1997](https://github.com/CCD-1997) and
 [@jitendra9873](https://github.com/jitendra9873). The android component of this
-application is [here.](https://github.com/jitendra9873/api-feedback-android). The
+application is [here.](https://github.com/jitendra9873/api-feedback-android) The
 code is incredibly messy, and not meant for production, but it works!
 
 
