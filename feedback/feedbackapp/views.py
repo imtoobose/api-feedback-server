@@ -28,7 +28,7 @@ def save_feedback(request):
 	print request.body.decode('utf-8')
 	value = json.loads(request.body.decode('utf-8'))
 	print value
-	feedback = '|'.join([str(x) for x in value['feedback']])
+	feedback = value['feedback']
 	name = value['name']
 	subject = value['subject']
 	comments = value['comments']
@@ -67,7 +67,7 @@ def show_all_teachers(request, isPractical):
 			"name": teach.name,
 			"subject": teach.subject,
 			"comments": teach.comments,
-			"feedback": teach.feedback.split('|'),
+			"feedback": teach.feedback.split(','),
 			})
 
 	print context
@@ -104,7 +104,7 @@ def get_teachers(request, isPractical="False"):
 	# count = 0
 
 	for teach in allTeachers:
-		feedback = teach.feedback.split('|')
+		feedback = teach.feedback.split(',')
 		if teach.name in context['teachers']:
 			context['teachers'][teach.name].append({
 				"subject": teach.subject,
@@ -144,7 +144,7 @@ def get_one_teacher(request, teacher_name):
 				"subject": teach.subject,
 			})
 
-		feedback = teach.feedback.split('|')
+		feedback = teach.feedback.split(',')
 
 		if teach.isPractical:
 			for i in range(5):
