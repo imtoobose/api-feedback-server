@@ -1,2 +1,0 @@
-json.loads("{"name": "Saumitra Bose","subject": "Computers","feedback": ["Hello", "World"],"comments": "ASDASdsadasdsadsad"
-}")
